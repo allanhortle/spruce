@@ -77,14 +77,34 @@ However when used in conjuction they create a highly useful and reusable compone
 
 
 ## Tweaks
-Tweaks handle real word layout relationships between Components.
+Tweaks handle real word layout relationships between Components. They are used all over the place but don't often provide much detailed styling. They are often more about positioning and location over color and form. 
 
-## Extras
+* Tweak classes are written as lowerCamelCase. 
+* They can be applied to any markup.
+* They affect the way components interact with each other
+
+```scss
+.marginRow2 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.floatLeft {
+    float: left;
+}
+```
+
+
+### Ghotachs
 ### This is not allowed
 ### Naming
 Spruce uses punctuation to define relationship and convey meaning. Because of this words are distinguished through camel case. 
 
 ### Style Sheet Order
+
+* Configuration
+* Components, Modifiers, Children
+* Tweaks
 
 [Components]: #components
 [Modifiers]: #modifiers--
