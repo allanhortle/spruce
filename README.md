@@ -28,8 +28,7 @@ Components are 90% of your styles.  They are isolated elements that define the s
 
 
 ## Modifiers
-Modifiers handle the state and variation of Components. A button component might be red when in a warning state, a caption might be left or right aligned.  
-The Modifiers dont change the base styles of a Component, only the bare minimum required to express the difference.
+Modifiers handle the state and variation of Components. A button component might be red when in a warning state, a caption might be left or right aligned. The Modifiers dont change the base styles of a Component, only the bare minimum required to express the difference.
 
 * Modifiers are written as the Component name folled by a hypen followed by the Modfiers name
 * Modifiers are not placed on markup without their Component.
