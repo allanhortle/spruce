@@ -12,13 +12,17 @@ A system for writing CSS that prioritises composing and low specificity.
 
 Components are 90% of your styles.  They are isolated elements that define the styling for a single object. A widget, a button or an image carousel, it doesn't matter where the components are placed they will look the same. 
 
-* Components class names begin with a capital letter.
+* Components class names are written as CapitalisedCamelCase.
 * Components are isolated. They do not rely on class hierarchy or other Components. 
 
 ```scss
 .Button {
     cursor: pointer;
     padding: 1rem;
+}
+
+.ErrorMessage {
+    color: red;
 }
 ```
 
