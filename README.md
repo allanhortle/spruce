@@ -86,7 +86,7 @@ Spruce uses punctuation to define relationship and convey meaning. Because of th
 
 ### Style Sheet Order
 
-[Components]: #components--
-[Modifiers]: #modifiers-_
-[Children]: #children
+[Components]: #components
+[Modifiers]: #modifiers--
+[Children]: #children-_
 [Tweaks]: #tweaks
