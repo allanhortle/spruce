@@ -52,13 +52,14 @@ Modifiers handle the state and variation of Components. A button component might
 
 
 ## Children `_`
-Children describe unavoidable relationships inside Components.
+> Children describe unavoidable relationships inside Components. 
+
+Sometimes a Component will need to rely on a relationship between the styles of the parent and the elements inside. Instead of increasing specificity by the use of nesting or the `>`selector we can express the relationship only in the semantics of a class name. This allows the developer to understand the relationship perfectly while retaining a singular level of specificity. 
 
 * Children are written as the Component name folled by an underscore followed by the Childs name `ComponentName_childName`
 * Children are not placed on the same markup as their parent
 
-The media object is a classic example of unavoidable parent chiuld relationships. The `.Media` component by itself is just a clearfix and `.Media_image` is just a float.
-However when used in conjuction they create a highly useful and reusable component. 
+The media object is a classic example of unavoidable parent child relationships. The `.Media` component by itself is only a clearfix and `.Media_image` is a float and margin. Used in isolation these classes are pointless. However when used in conjuction as a parent and child they create a highly useful and reusable component. 
 
 ```scss
 .Media {
@@ -74,6 +75,18 @@ However when used in conjuction they create a highly useful and reusable compone
     margin-right: 1rem;
 }
 ```
+
+```html
+<div class="Media">
+	<div class="Media_image"></div>
+	<div class="Media_body"></div>
+</div>
+```
+### Warnings
+Some more complex modules may seem like they require a parent child relationship when in actual fact they just share a similar location or theme. These are better described as a collection of Components. 
+
+See Component Grouping. 
+
 
 
 ## Tweaks
@@ -97,6 +110,8 @@ Tweaks handle real word layout relationships between Components. They are used a
 
 ### Ghotachs
 ### This is not allowed
+### Child Modifiers. 
+Sometimes a rare case will require the use of children with modifiers. This is not necessarily wrong but should be thought out thoroughly before implementing as it can cause in unnecessary confusion. If implement thy must be named as `Component_child-modifier`
 ### Naming
 Spruce uses punctuation to define relationship and convey meaning. Because of this words are distinguished through camel case. 
 
