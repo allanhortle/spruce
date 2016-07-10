@@ -120,11 +120,13 @@ Tweaks handle real word layout relationships between Components. They are used a
 
 
 ## Ghotachs
+
 ### Component Grouping
 There is often a tendency to create unnecessary relationships due to a components physical location rather than its shared attributes. Say Carousel contains a large button used as a call to action. It may seem logical to label this `Carousel_button` or`Carousel_callToAction`to show the relationship but in actual fact the buttons position inside this carousel does not actually effect its styling in any way. This would be better represented as either a modifier of `Button`or if sufficiently distinct from it a whole new a Component labelled `CallToAction`
-### This is not allowed
+
 ### Child Modifiers. 
 Sometimes a rare case will require the use of children with modifiers. This is not necessarily wrong but should be thought out thoroughly before implementing as it can cause in unnecessary confusion. If implement thy must be named as `Component_child-modifier`
+
 ### namingConventions
 Spruce's main aim is to standardize specificity and class name confusion by using punctuation to define relationships and convey meaning. Because of this all punctuation is reserved for defining relationships and so multiple words are separated through camel case. 
 ```html
@@ -150,7 +152,6 @@ Words are always written out in full. Needless confusion is created when one dev
 ```
 
 ### Style Sheet Order
-
 * Configuration
 * Components, Modifiers, Children
 * Tweaks
