@@ -10,23 +10,34 @@ A system for writing CSS that prioritises composing and low specificity.
 
 ## Components
 
-Components are 90% of your styles.  They are isolated elements that define the styling for a single object. A widget, a button or an image carousel, it doesn't matter where the components are placed they will look the same. 
+> Components are 90% of your styles. 
 
-* Components class names begin with a capital letter.
-* Components are isolated. They do not rely on class hierarchy or other Components. 
+They are isolated elements that define the styling for a single object. A widget, a button or an image carousel. It doesn't matter where the components are placed they will look the same. 
+
+* Component class names begin with a capital letter.
+* Components are isolated. They do not rely on class hierarchy or relationships with other Components. 
 
 ```scss
 .Button {
     cursor: pointer;
     padding: 1rem;
 }
+
+// bad
+.Carousel {
+	.Button {
+		...
+	}
+}
 ```
 
 
 ## Modifiers `-`
-Modifiers handle the state and variation of Components. A button component might be red when in a warning state, a caption might be left or right aligned. The Modifiers dont change the base styles of a Component, only the bare minimum required to express the difference.
+> Modifiers handle state and variation in Components.
 
-* Modifiers are written as the Component name folled by a hypen followed by the Modfiers name
+A button component might be red when in a warning state, a caption might be left or right aligned. The Modifiers do not change the base styles of a Component, only the bare minimum required to express the difference.
+
+* Modifiers are written as: `Component-modifier`
 * Modifiers are not placed on markup without their Component.
 
 ```scss
@@ -54,9 +65,9 @@ Modifiers handle the state and variation of Components. A button component might
 ## Children `_`
 > Children describe unavoidable relationships inside Components. 
 
-Sometimes a Component will need to rely on a relationship between the styles of the parent and the elements inside. Instead of increasing specificity by the use of nesting or the `>`selector we can express the relationship only in the semantics of a class name. This allows the developer to understand the relationship perfectly while retaining a singular level of specificity. 
+Sometimes a Component will need to rely on a relationship between the styles of the parent and the elements inside. Instead of increasing specificity by the use of nesting or the `>`selector we can express the relationship in the semantics of a class name. This allows the developer to understand the relationship perfectly while retaining a singular level of specificity. 
 
-* Children are written as the Component name folled by an underscore followed by the Childs name `ComponentName_childName`
+* Children are written as `ComponentName_childName`
 * Children are not placed on the same markup as their parent
 
 The media object is a classic example of unavoidable parent child relationships. The `.Media` component by itself is only a clearfix and `.Media_image` is a float and margin. Used in isolation these classes are pointless. However when used in conjuction as a parent and child they create a highly useful and reusable component. 
@@ -108,12 +119,26 @@ Tweaks handle real word layout relationships between Components. They are used a
 ```
 
 
-### Ghotachs
+## Ghotachs
+### Component Grouping
+There is often a tendency to create unnecessary relationships due to a components physical location rather than its shared attributes. Say Carousel contains a large button used as a call to action. It may seem logical to label this `Carousel_button` or`Carousel_callToAction`to show the relationship but in actual fact the buttons position inside this carousel does not actually effect its styling in any way. This would be better represented as either a modifier of `Button`or if sufficiently distinct from it a whole new a Component labelled `CallToAction`
 ### This is not allowed
 ### Child Modifiers. 
 Sometimes a rare case will require the use of children with modifiers. This is not necessarily wrong but should be thought out thoroughly before implementing as it can cause in unnecessary confusion. If implement thy must be named as `Component_child-modifier`
-### Naming
-Spruce uses punctuation to define relationship and convey meaning. Because of this words are distinguished through camel case. 
+### namingConventions
+Spruce's main aim is to standardize specificity and class name confusion by using punctuation to define relationships and convey meaning. Because of this all punctuation is reserved for defining relationships and so multiple words are separated through camel case. 
+
+Words are always written out in full. Needless confusion is created when one developer shortens a word to what they deem logical only for another developer to have know idea what it refers to. The main point of Spruce is to clearly define 
+
+```
+.Btn-lrg
+.UsrPrfl
+
+.Button-large
+.UserProfile
+
+
+```
 
 ### Style Sheet Order
 
