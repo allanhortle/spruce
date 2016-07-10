@@ -119,7 +119,7 @@ Tweaks handle real word layout relationships between Components. They are used a
 ```
 
 
-## Ghotachs
+## Gotchas
 
 ### Component Grouping
 There is often a tendency to create unnecessary relationships due to a components physical location rather than its shared attributes. Say Carousel contains a large button used as a call to action. It may seem logical to label this `Carousel_button` or`Carousel_callToAction`to show the relationship but in actual fact the buttons position inside this carousel does not actually effect its styling in any way. This would be better represented as either a modifier of `Button`or if sufficiently distinct from it a whole new a Component labelled `CallToAction`
