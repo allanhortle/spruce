@@ -131,9 +131,11 @@ Spruce's main aim is to standardize specificity and class name confusion by usin
 Words are always written out in full. Needless confusion is created when one developer shortens a word to what they deem logical only for another developer to have know idea what it refers to. The main point of Spruce is to clearly define 
 
 ```
+// Bad
 .Btn-lrg
 .UsrPrfl
 
+// Good
 .Button-large
 .UserProfile
 
