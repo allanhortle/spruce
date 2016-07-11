@@ -101,13 +101,36 @@ See Component Grouping.
 
 
 ## Tweaks
-Tweaks handle real word layout relationships between Components. They are used all over the place but don't often provide much detailed styling. They are often more about positioning and location over color and form. 
+> Tweaks handle real word layout relationships between Components. 
 
-* Tweak classes are written as lowerCamelCase. 
+Describing Components as isolated islands that don't interact with their location or neighboring Components goes a long way to maintaining reusable and compose-able styles but using them in the real world doesn't always work out so neatly.
+
+An `Input` component might in most cases require a small margin-bottom to keep the forms rows evenly spaced, but in one location the design requires a larger piece of text inserted between two `Inputs`. However the `Title` component that might be used here has a large margin-top and when placed next to the `Input` the resulting extra space is unfit for the design. Neither of these Components are wrong in their description of styling, it is their combination that yields poor results. One solution might be to create a modifier on either `Title` or `Input` but this would create an unnecessary relationship between out two components. It may as well be called `Title-whenUsedAfterInput`. On top of this the changing nature the web could mean that this design might not be in use for very long. If we were to describe this relationship in our component there is a very real chance that over time it may be describing something that no longer exists. Which would only cause confusion for future developers.
+
+The solution is to use Tweaks. Tweaks provide targeted minor layout changes that help to arrange Components next to each other. Tweaks are distinguished from components by their `lowerCamelCase` class names. 
+
+So our problem above can be solved with the use of just one `marginTop0` tweak. 
+
+```html
+<form>
+    <input class="Input" />
+    <label class="Title Title-large marginTop0">Large Text</label>
+    <input class="Input" />
+</form>
+```
+
+* Tweak class names are written as lowerCamelCase. 
+* Tweak classes are never defined in Component files.
+* Tweak defined after Components.
 * They can be applied to any markup.
 * They affect the way components interact with each other
 
 ```scss
+
+.marginTop0 {
+    margin-top: 0;
+}
+
 .marginRow2 {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -122,13 +145,14 @@ Tweaks handle real word layout relationships between Components. They are used a
 ## Gotchas
 
 ### Component Grouping
-There is often a tendency to create unnecessary relationships due to a components physical location rather than its shared attributes. Say Carousel contains a large button used as a call to action. It may seem logical to label this `Carousel_button` or`Carousel_callToAction`to show the relationship but in actual fact the buttons position inside this carousel does not actually effect its styling in any way. This would be better represented as either a modifier of `Button`or if sufficiently distinct from it a whole new a Component labelled `CallToAction`
+There is often a tendency to create unnecessary relationships due to a components physical location rather than its shared attributes. Say Carousel contains a large button used as a call to action. It may seem logical to label this `Carousel_button` or`Carousel_callToAction`to show the relationship but in actual fact the buttons position inside this carousel does not actually effect its styling in any way. This would be better represented as either a modifier of `Button`or if sufficiently distinct from it a whole new a Component labeled `CallToAction`
 
 ### Child Modifiers. 
 Sometimes a rare case will require the use of children with modifiers. This is not necessarily wrong but should be thought out thoroughly before implementing as it can cause in unnecessary confusion. If implement thy must be named as `Component_child-modifier`
 
 ### namingConventions
 Spruce's main aim is to standardize specificity and class name confusion by using punctuation to define relationships and convey meaning. Because of this all punctuation is reserved for defining relationships and so multiple words are separated through camel case. 
+
 ```html
 <!-- bad -->
 <div class="bluetooth-list--selected"><div>
@@ -152,6 +176,7 @@ Words are always written out in full. Needless confusion is created when one dev
 ```
 
 ### Style Sheet Order
+
 * Configuration
 * Components, Modifiers, Children
 * Tweaks
