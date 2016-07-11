@@ -1,6 +1,6 @@
 # Spruce
 
-A system for writing CSS that prioritizes composing and low specificity.
+A system for writing CSS that uses strict naming semantics to prioritize composing and low specificity.
 
 ## Tl;dr
 * [Components] are 90% of your styles.
