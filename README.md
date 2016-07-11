@@ -1,6 +1,6 @@
 # Spruce
 
-A system for writing CSS that prioritises composing and low specificity.
+A system for writing CSS that prioritizes composing and low specificity.
 
 ## Tl;dr
 * [Components] are 90% of your styles.
@@ -15,7 +15,8 @@ A system for writing CSS that prioritises composing and low specificity.
 They are isolated elements that define the styling for a single object. A widget, a button or an image carousel. It doesn't matter where the components are placed they will look the same. 
 
 * Component class names begin with a capital letter.
-* Components are isolated. They do not rely on class hierarchy or relationships with other Components. 
+* Components are isolated. They do not rely on class hierarchy or relationships with other Components.
+* Components are defined in a single file per Component.
 
 ```scss
 .Button {
@@ -70,7 +71,7 @@ Sometimes a Component will need to rely on a relationship between the styles of 
 * Children are written as `ComponentName_childName`
 * Children are not placed on the same markup as their parent
 
-The media object is a classic example of unavoidable parent child relationships. The `.Media` component by itself is only a clearfix and `.Media_image` is a float and margin. Used in isolation these classes are pointless. However when used in conjuction as a parent and child they create a highly useful and reusable component. 
+The media object is a classic example of unavoidable parent child relationships. The `.Media` component by itself is only a clear-fix and `.Media_image` is a float and margin. Used in isolation these classes are pointless. However when used in conjunction as a parent and child they create a highly useful and reusable component. 
 
 ```scss
 .Media {
