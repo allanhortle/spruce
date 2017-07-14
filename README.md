@@ -6,7 +6,8 @@ A system for writing CSS that uses strict class naming rules to prioritize compo
 * [Components] are 90% of your styles.
 * [Modifiers] handle the state and variation of Components
 * [Children] describe unavoidable relationships inside Components.
-* [Tweaks] handle real word layout relationships between Components.
+* [Peers] handle relationships between Components.
+* [Tweaks] are a last resort for problems with real-world designs.
 
 ## Components
 
@@ -111,12 +112,13 @@ Some more complex modules may seem like they require a parent child relationship
 
 See Component Grouping. 
 
-
+## Peers
+> Peers handle relationships between Components.
 
 ## Tweaks
-> Tweaks handle real word layout relationships between Components. 
+> Tweaks are a last resorts for problems with real-world designs. 
 
-Describing Components as isolated islands that don't interact with their location or neighboring Components goes a long way to maintaining reusable and compose-able styles but using them in the real world doesn't always work out so neatly.
+Describing Components as isolated islands that don't interact with their location or neighboring Components goes a long way to maintaining reusable and composeable styles but using them in the real world doesn't always work out so neatly.
 
 An `Input` component might in most cases require a small margin-bottom to keep the forms rows evenly spaced, but in one location the design requires a larger piece of text inserted between two `Inputs`. The `Title` component  would seem like a good fit but that has a large margin-top and when placed next to the `Input` the resulting extra space is unfit for the design. Neither of these Components are wrong in their description of styling, it is their combination that yields poor results. One solution might be to create a modifier on either `Title` or `Input` but this would create an unnecessary relationship between out two components. It may as well be called `Title-whenUsedAfterInput`. On top of this the changing nature the web could mean that this design might not be in use for very long. If we were to describe this relationship in our component there is a very real chance that over time it may be describing something that no longer exists. Which would only cause confusion for future developers.
 
@@ -134,9 +136,9 @@ So our problem above can be solved with the use of just one `marginTop0` tweak.
 
 * Tweak class names are written as lowerCamelCase. 
 * Tweak classes are never defined in Component files.
-* Tweak defined after Components.
-* They can be applied to any markup.
-* They affect the way components interact with each other
+* Tweaks are defined after Components.
+* Tweaks can be applied to any markup.
+* Tweaks only affect the way components interact with each other.
 
 ```scss
 
@@ -194,4 +196,5 @@ Words are always written out in full. Needless confusion is created when one dev
 [Components]: #components
 [Modifiers]: #modifiers--
 [Children]: #children-_
+[Peers]: #peers-_
 [Tweaks]: #tweaks
