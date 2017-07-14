@@ -26,9 +26,9 @@ They are isolated elements that define the styling for a single object. A widget
 
 // bad
 .Carousel {
-	.Button {
-		...
-	}
+    .Button {
+        ...
+    }
 }
 ```
 
@@ -70,6 +70,7 @@ Sometimes a Component will need to rely on a relationship between the styles of 
 
 * Children are written as `ComponentName_childName`
 * Children are not placed on the same markup as their parent
+* All parent modifiers are placed on their children. `Parent Parent-modifier`, `Parent_child Parent_child-modifier`
 
 The media object is a classic example of unavoidable parent child relationships. The `.Media` component by itself is only a clear-fix and `.Media_image` is a float and margin. Used in isolation these classes are pointless. However when used in conjunction as a parent and child they create a highly useful and reusable component. 
 
@@ -94,6 +95,17 @@ The media object is a classic example of unavoidable parent child relationships.
 	<div class="Media_body"></div>
 </div>
 ```
+
+### Child modifiers
+To keep a flat level of specificity parent modifiers must be applied to each child.
+
+```html
+<div class="Media Media-right">
+    <div class="Media_image Media_image-right"></div>
+    <div class="Media_body Media_body-right"></div>
+</div>
+```
+
 ### Warnings
 Some more complex modules may seem like they require a parent child relationship when in actual fact they just share a similar location or theme. These are better described as a collection of Components. 
 
@@ -147,9 +159,6 @@ So our problem above can be solved with the use of just one `marginTop0` tweak.
 
 ### Component Grouping
 There is often a tendency to create unnecessary relationships due to a components physical location rather than its shared attributes. Say Carousel contains a large button used as a call to action. It may seem logical to label this `Carousel_button` or`Carousel_callToAction`to show the relationship but in actual fact the buttons position inside this carousel does not actually effect its styling in any way. This would be better represented as either a modifier of `Button`or if sufficiently distinct from it a whole new a Component labeled `CallToAction`
-
-### Child Modifiers. 
-Sometimes a rare case will require the use of children with modifiers. This is not necessarily wrong but should be thought out thoroughly before implementing as it can cause in unnecessary confusion. If implement thy must be named as `Component_child-modifier`
 
 ### namingConventions
 Spruce's main aim is to standardize specificity and class name confusion by using punctuation to define relationships and convey meaning. Because of this all punctuation is reserved for defining relationships and so multiple words are separated through camel case. 
