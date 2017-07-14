@@ -4,9 +4,9 @@ A system for writing CSS that uses strict class naming rules to prioritize compo
 
 ## Tl;dr
 * [Components] are 90% of your styles.
-* [Modifiers] handle the state and variation of Components
+* [Modifiers] describe the state and variation of Components
 * [Children] describe unavoidable relationships inside Components.
-* [Peers] handle relationships between Components.
+* [Peers] describe relationships between Components.
 * [Tweaks] are a last resort for problems with real-world designs.
 
 ## Components
@@ -112,7 +112,7 @@ Some more complex modules may seem like they require a parent child relationship
 
 See Component Grouping. 
 
-## Peers
+## Peers `--`
 > Peers handle relationships between Components.
 
 ## Tweaks
@@ -196,5 +196,5 @@ Words are always written out in full. Needless confusion is created when one dev
 [Components]: #components
 [Modifiers]: #modifiers--
 [Children]: #children-_
-[Peers]: #peers-_
+[Peers]: #peers---
 [Tweaks]: #tweaks
